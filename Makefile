@@ -21,4 +21,5 @@ update_tinygl: clean
 	cd temp && git clone https://github.com/gek169/tinyglplusplus.git && cd ..
 	cp -r temp/tinyglplusplus/src ./
 	cp -r temp/tinyglplusplus/include-demo ./
+	cp -r temp/tinyglplusplus/include ./
 	rm -rf temp

@@ -1,21 +1,21 @@
 include ../config.mk
+#CC= gcc
+#CFLAGS = -g -Wall -O3 -w
+GL_LIBS= -L../ 
+GL_INCLUDES= -I../include/
+ALL_T= main
+LIB= ../lib/libTinyGL.a
 
-OBJS= api.o list.o vertex.o init.o matrix.o texture.o \
-      misc.o clear.o light.o clip.o select.o get.o \
-      zbuffer.o zline.o ztriangle.o \
-      zmath.o image_util.o msghandling.o \
-      arrays.o specbuf.o memory.o ztext.o zraster.o accum.o zpostprocess.o
+#For GCC on good OSes:
+SDL_LIBS= -lSDL 
+#for MinGW users:
+#SDL_LIBS= -lmingw32 -lSDLmain -lSDL 
 
 
-INCLUDES = -I./include
-LIB = libTinyGL.a
-
-all: $(LIB)
-
-$(LIB): $(OBJS)
-	rm -f $(LIB)
-	ar rcs $(LIB) $(OBJS)
+SDL_MIXERLIBS= -lSDL_mixer -lmad -logg -lmikmod -logg
+#SDL_MIXERLIBS= 
+all: $(ALL_T)
 clean:
-	rm -f *~ *.o *.a
-.c.o:
-	$(CC) $(CFLAGS_LIB) -c $*.c
+	rm -f $(ALL_T) *.exe
+main:
+	$(CC) *.c $(LIB) -o main $(GL_INCLUDES) $(SDL_LIBS) $(SDL_MIXERLIBS) $(GL_LIBS) $(CFLAGS) -lm

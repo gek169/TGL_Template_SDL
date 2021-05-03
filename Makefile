@@ -7,14 +7,16 @@ all: $(LIB) CODE
 $(LIB):
 	cd src_tgl && $(MAKE) && cd ..
 	cp src_tgl/*.a ./lib/
+lua/liblua.a:
+	cd lua && $(MAKE) && cd ..
 
-
-CODE: $(LIB)
+CODE: $(LIB) lua/liblua.a
 	cd src && $(MAKE) && cd ..
 	-mv src/main ./build/
 	-mv src/*.exe ./build/
 clean:
 	cd src_tgl && $(MAKE) clean && cd ..
+	cd lua && $(MAKE) clean && cd ..
 	cd src && $(MAKE) clean && cd ..
 	cd lib && rm -f *.a && cd ..
 	cd build && rm -f main && cd ..

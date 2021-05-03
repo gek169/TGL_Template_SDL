@@ -9,6 +9,7 @@ $(LIB):
 	cp src_tgl/*.a ./lib/
 lua/liblua.a:
 	cd lua && $(MAKE) && cd ..
+	cp lua/*.a ./lib/
 
 CODE: $(LIB) lua/liblua.a
 	cd src && $(MAKE) && cd ..

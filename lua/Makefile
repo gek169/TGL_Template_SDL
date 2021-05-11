@@ -9,7 +9,8 @@ include ../config.mk
 PLAT= guess
 
 #CC= gcc -std=gnu99
-LUA_CFLAGS= -Ofast -Wall -Wextra -DLUA_5_3_COMPAT $(SYSCFLAGS) $(CFLAGS)
+#LUA_CFLAGS= -Ofast -Wall -Wextra -DLUA_5_3_COMPAT $(SYSCFLAGS) $(CFLAGS)
+LUA_CFLAGS= -Ofast -Wall -Wextra $(SYSCFLAGS) $(CFLAGS)
 LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
 LIBS= -lm $(SYSLIBS) $(MYLIBS)
 
@@ -43,8 +44,10 @@ LUA_O=	lua.o
 LUAC_T=	luac
 LUAC_O=	luac.o
 
-ALL_O= $(BASE_O) $(LUA_O) $(LUAC_O)
-ALL_T= $(LUA_A) $(LUA_T) $(LUAC_T)
+#ALL_O= $(BASE_O) $(LUA_O) $(LUAC_O)
+ALL_O= $(BASE_O) 
+#ALL_T= $(LUA_A) $(LUA_T) $(LUAC_T)
+ALL_T= $(LUA_A) 
 ALL_A= $(LUA_A)
 
 # Targets start here.
